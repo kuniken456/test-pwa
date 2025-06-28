@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#4CAF50" />
-  <!-- Manifest file berisi nama, ikon, warna tema, dan start URL -->
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;400;600&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <title>Axylon's Commission</title>
 </head>
 <body>
@@ -16,7 +18,6 @@
   </header>
 
   <main id="katalog">
-    <!-- Katalog akan dimuat lewat JS agar bisa disimpan offline -->
     <noscript>
       <p style="text-align:center; color:red;">Please activate JavaScript to see this.</p>
     </noscript>
@@ -31,10 +32,25 @@
 
   <script>
     const katalog = [
-  { title: "Half Body", img: "images/Tar-21.png", price: "$50" },
-  { title: "Full Body", img: "images/Naranthe.png", price: "$100" },
-  { title: "Full Illustration", img: "images/birthday.png", price: "$200" }
-];
+      {
+        title: "Half Body",
+        img: "images/Tar-21.png",
+        price: "$50",
+        description: "Upper body illustration with clean lines and simple pose."
+      },
+      {
+        title: "Full Body",
+        img: "images/Naranthe.png",
+        price: "$100",
+        description: "Full character from head to toe with basic background."
+      },
+      {
+        title: "Full Illustration",
+        img: "images/birthday.png",
+        price: "$200",
+        description: "Complete scene with full body and detailed background."
+      }
+    ];
 
     function renderKatalog() {
       const container = document.getElementById("katalog");
@@ -48,6 +64,7 @@
           <img src="${item.img}" alt="${item.title}">
           <h3>${item.title}</h3>
           <p>${item.price}</p>
+          <p class="description">${item.description}</p>
         `;
         container.appendChild(card);
       });
