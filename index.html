@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4CAF50" />
+  <!-- Manifest file berisi nama, ikon, warna tema, dan start URL -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Axylon's Commission</title>
+</head>
+<body>
+  <header>
+    <h1>Axylon's Commission</h1>
+    <p>Please choose what type of illustration you want!</p>
+  </header>
+
+  <main id="katalog">
+    <!-- Katalog akan dimuat lewat JS agar bisa disimpan offline -->
+    <noscript>
+      <p style="text-align:center; color:red;">Please activate JavaScript to see this.</p>
+    </noscript>
+    <div class="fallback">
+      <p style="text-align:center;">Loading Catalog...(please make sure you have a stable connection)</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Axylon's Commission</p>
+  </footer>
+
+  <script>
+    const katalog = [
+  { title: "Half Body", img: "img/halfbody.jpg", price: "$50" },
+  { title: "Full Body", img: "img/fullbody.jpg", price: "$100" },
+  { title: "Full Illustration", img: "img/fullillustration.jpg", price: "$200" }
+];
+
+    function renderKatalog() {
+      const container = document.getElementById("katalog");
+      const fallback = document.querySelector(".fallback");
+      if (fallback) fallback.remove();
+
+      katalog.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${item.img}" alt="${item.title}">
+          <h3>${item.title}</h3>
+          <p>${item.price}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    window.addEventListener("load", () => {
+      renderKatalog();
+
+      if ('caches' in window) {
+        caches.open("katalog-komisi-data").then(cache => {
+          katalog.forEach(item => {
+            cache.add(item.img).catch(err => console.warn("Gagal cache:", item.img));
+          });
+        });
+      }
+    });
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('SW registered'))
+        .catch(err => console.error('SW registration failed', err));
+    }
+  </script>
+</body>
+</html>
