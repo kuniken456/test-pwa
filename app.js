@@ -1,7 +1,7 @@
 const katalog = [
-  { title: "Chibi Style", img: "img/chibi.jpg", price: "Rp50.000" },
-  { title: "Anime Style", img: "img/anime.jpg", price: "Rp100.000" },
-  { title: "Semi-Realistic", img: "img/semi.jpg", price: "Rp150.000" }
+  { title: "Half Body", img: "images/Tar-21.png", price: "$50" },
+  { title: "Full Body", img: "images/Naranthe.png", price: "$100" },
+  { title: "Full Illustration", img: "images/birthday.png", price: "$200" }
 ];
 
 function renderKatalog() {

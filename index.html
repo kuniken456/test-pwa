@@ -16,10 +16,10 @@
     <h1>Axylon's Commission</h1>
     <p>Please choose what type of illustration you want!</p>
   </header>
-
+<!-- Fallback untuk website, agar pada saat user mematikan javascript akan diarahkan ke sni -->
   <main id="katalog">
     <noscript>
-      <p style="text-align:center; color:red;">Please activate JavaScript to see this.</p>
+      <p style="text-align:center; color:red;">Please activate JavaScript to see this.</p> 
     </noscript>
     <div class="fallback">
       <p style="text-align:center;">Loading Catalog...(please make sure you have a stable connection)</p>
@@ -82,7 +82,7 @@
       }
     });
   </script>
-
+<!-- Mengecek apakah browser yang digunakan mendukung service worker atau tidak -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')

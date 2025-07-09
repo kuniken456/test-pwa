@@ -4,9 +4,9 @@ const urlsToCache = [
   "/index.html",
   "/style.css",
   "/app.js",
-  "/img/chibi.jpg",
-  "/img/anime.jpg",
-  "/img/semi.jpg"
+  "/images/Tar-21.png",
+  "/images/birthday.png",
+  "/images/Naranthe.png"
 ];
 
 self.addEventListener("install", event => {
